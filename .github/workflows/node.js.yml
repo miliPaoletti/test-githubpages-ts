@@ -14,6 +14,9 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    env:
+      NEXT_PUBLIC_BASE_PATH: /test-githubpages-ts
+
     strategy:
       matrix:
         node-version: [12.x]
@@ -36,7 +39,8 @@ jobs:
         fi
         npm run build
         npm run export
-    
+    - name: Add .nojekyll file
+      run: touch ./out/.nojekyll
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4
       with:
