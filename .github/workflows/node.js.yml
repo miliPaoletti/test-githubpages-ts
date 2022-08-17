@@ -26,16 +26,16 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm |
-          if [ -e yarn.lock ]; then
-          yarn install --frozen-lockfile
-          elif [ -e package-lock.json ]; then
-          npm ci
-          else
-          npm i
-          fi
-          npm run build
-          npm run export
+    - run: |
+        if [ -e yarn.lock ]; then
+        yarn install --frozen-lockfile
+        elif [ -e package-lock.json ]; then
+        npm ci
+        else
+        npm i
+        fi
+        npm run build
+        npm run export
     
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4
