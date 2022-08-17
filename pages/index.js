@@ -29,6 +29,7 @@ export default function Home() {
         /> */}
       </Head>
       Testing
+      <div>Delete ./</div>
       {allDestinations.map((item) => {
         return (
           <div key={item["id"]}>
